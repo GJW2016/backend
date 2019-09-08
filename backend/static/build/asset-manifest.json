@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/backend/static/build/static/css/main.bdb92368.chunk.css",
+    "main.js": "/backend/static/build/static/js/main.2dac38f3.chunk.js",
+    "main.js.map": "/backend/static/build/static/js/main.2dac38f3.chunk.js.map",
+    "runtime~main.js": "/backend/static/build/static/js/runtime~main.7b741872.js",
+    "runtime~main.js.map": "/backend/static/build/static/js/runtime~main.7b741872.js.map",
+    "static/css/2.b6eb068b.chunk.css": "/backend/static/build/static/css/2.b6eb068b.chunk.css",
+    "static/js/2.0e1b678f.chunk.js": "/backend/static/build/static/js/2.0e1b678f.chunk.js",
+    "static/js/2.0e1b678f.chunk.js.map": "/backend/static/build/static/js/2.0e1b678f.chunk.js.map",
+    "index.html": "/backend/static/build/index.html",
+    "precache-manifest.32c02969b085ad7c8a0059910e873084.js": "/backend/static/build/precache-manifest.32c02969b085ad7c8a0059910e873084.js",
+    "service-worker.js": "/backend/static/build/service-worker.js",
+    "static/css/2.b6eb068b.chunk.css.map": "/backend/static/build/static/css/2.b6eb068b.chunk.css.map",
+    "static/css/main.bdb92368.chunk.css.map": "/backend/static/build/static/css/main.bdb92368.chunk.css.map",
+    "static/media/Website_logo.png": "/backend/static/build/static/media/Website_logo.768179a8.png",
+    "static/media/clock.jpg": "/backend/static/build/static/media/clock.9a0599b9.jpg"
+  }
+}

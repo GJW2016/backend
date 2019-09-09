@@ -2,7 +2,7 @@ from flask import render_template
 from flask import Blueprint
 from flask import url_for
 from flask import Flask, jsonify
-from backend.model import Country, Contents, Tags
+from backend.model import Country, Contents, Tags, Events, Festival
 
 main = Blueprint('main', __name__, template_folder='templates', static_folder='static', static_url_path="/static")
 
@@ -11,7 +11,6 @@ main = Blueprint('main', __name__, template_folder='templates', static_folder='s
 def get_countries():
     country = Country.query.all()
     return jsonify(json_list=[i.serialize for i in country])
-    #return jsonify(json_list=[i.serialize for i in country.country_content])
 
 
 @main.route('/tags')
@@ -24,6 +23,18 @@ def get_tags():
 def get_contents():
     contents = Contents.query.all()
     return jsonify(json_list=[i.serialize for i in contents])
+
+
+@main.route('/events')
+def get_events():
+    events = Events.query.all()
+    return jsonify(json_list=[i.serialize for i in events])
+
+
+@main.route('/festivals')
+def get_festivals():
+    festivals = Festival.query.all()
+    return jsonify(json_list=[i.serialize for i in festivals])
 
 
 @main.route('/', defaults={'path': ''})

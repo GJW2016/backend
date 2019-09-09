@@ -7,6 +7,8 @@ class Country(db.Model):
     __tablename__ = 'COUNTRY'
     id = db.Column('COUNTRY_ID', db.Integer, primary_key=True)
     name = db.Column('COUNTRY_NAME', db.VARCHAR(255))
+    img = db.Column('COUNTRY_IMG', db.VARCHAR(255))
+    small = db.Column('COUNTRY_SMALL', db.VARCHAR(255))
     contents = db.relationship('Contents', backref='country_content')
     @property
     def serialize(self):
@@ -14,16 +16,16 @@ class Country(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'img': self.img,
+            'small': self.small,
         }
-
-    def __repr__(self):
-        return '<Country %s>' % self.name
 
 
 class Tags(db.Model):
     __tablename__ = 'TAGS'
     id = db.Column('TAG_ID', db.Integer, primary_key=True)
     name = db.Column('TAG_NAME', db.VARCHAR(255))
+    img = db.Column('TAG_IMG', db.VARCHAR(255))
     contents = db.relationship('Contents', backref='tag_content')
     @property
     def serialize(self):
@@ -31,7 +33,7 @@ class Tags(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-
+            'img': self.img,
         }
 
 

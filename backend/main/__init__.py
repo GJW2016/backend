@@ -7,7 +7,7 @@ from backend.model import Country, Contents, Tags
 main = Blueprint('main', __name__, template_folder='templates', static_folder='static', static_url_path="/static")
 
 
-@main.route('/country')
+@main.route('/countries')
 def get_countries():
     country = Country.query.all()
     return jsonify(json_list=[i.serialize for i in country])

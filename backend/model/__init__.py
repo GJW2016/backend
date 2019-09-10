@@ -43,6 +43,7 @@ class Contents(db.Model):
     __tablename__ = 'CONTENT'
     id = db.Column('CONTENT_ID', db.Integer, primary_key=True)
     content = db.Column('CONTENT', db.VARCHAR(255))
+    img = db.Column('CONTENT_IMAGE', db.VARCHAR(255))
     country_id = db.Column(db.Integer, db.ForeignKey('COUNTRY.COUNTRY_ID'))
     tag_id = db.Column(db.Integer, db.ForeignKey('TAGS.TAG_ID'))
     #country = db.relationship('Country', backref='contents')
@@ -53,6 +54,7 @@ class Contents(db.Model):
         return {
             'id': self.id,
             'content': self.content,
+            'img': self.img,
             'country_id': self.country_id,
             'tag_id': self.tag_id
         }

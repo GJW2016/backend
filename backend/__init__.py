@@ -7,7 +7,7 @@ import pymysql
 app = Flask(__name__, template_folder="templates", static_folder="static", static_url_path="/backend/static")
 # 防止跨域攻击
 app.config[
-    'SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:12345678@database-2.cnq0sgzuhxxq.ap-southeast-2.rds.amazonaws.com:3306/b16'
+    'SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:12345678@backup.cnq0sgzuhxxq.ap-southeast-2.rds.amazonaws.com:3306/b16'
 
 app.config['SQLALCHEMY_COMMIT_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True

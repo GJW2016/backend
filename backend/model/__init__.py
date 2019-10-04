@@ -101,6 +101,26 @@ class Events(db.Model):
         }
 
 
+class Recipe(db.Model):
+    __tablename__ = 'RECIPE'
+    id = db.Column('RECIPE_ID', db.Integer, primary_key=True)
+    name = db.Column('RECIPE_NAME', db.VARCHAR(255))
+    ingredients = db.Column('INGREDIENTS', db.VARCHAR(255))
+    procedure = db.Column('PROCEDURE', db.VARCHAR(255))
+    pic = db.Column('PIC', db.VARCHAR(255))
+    country_id = db.Column(db.Integer, db.ForeignKey('COUNTRY.COUNTRY_ID'))
+    @property
+    def serialize(self):
+        """Return object data in easily serializable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'ingredients': self.ingredients,
+            'procedure': self.procedure,
+            'pic': self.pic,
+            'country_id': self.country_id,
+        }
+
 # 1.创建表
 db.create_all()
 

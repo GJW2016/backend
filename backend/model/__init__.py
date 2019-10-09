@@ -46,7 +46,6 @@ class Contents(db.Model):
     img = db.Column('CONTENT_IMAGE', db.VARCHAR(255))
     country_id = db.Column(db.Integer, db.ForeignKey('COUNTRY.COUNTRY_ID'))
     tag_id = db.Column(db.Integer, db.ForeignKey('TAGS.TAG_ID'))
-    #country = db.relationship('Country', backref='contents')
 
     @property
     def serialize(self):
@@ -64,9 +63,9 @@ class Festival(db.Model):
     __tablename__ = 'FESTIVAL'
     id = db.Column('FESTIVAL_ID', db.Integer, primary_key=True)
     name = db.Column('FESTIVAL_NAME', db.VARCHAR(255))
-    month = db.Column('FESTIVAL_MONTH', db.Integer)
-    day = db.Column('FESTIVAL_DAY', db.Integer)
-    des = db.Column('FESTIVAL_DES', db.VARCHAR(255))
+    date = db.Column('FESTIVAL_DATE', db.DATE)
+    tag_id = db.Column('TAG_ID', db.Integer)
+    country_id = db.Column('COUNTRY_ID', db.Integer)
 
     @property
     def serialize(self):
@@ -74,9 +73,9 @@ class Festival(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'month': self.month,
-            'day': self.day,
-            'des': self.des,
+            'date': self.date,
+            'tag_id': self.tag_id,
+            'country_id': self.country_id,
         }
 
 
@@ -84,9 +83,10 @@ class Events(db.Model):
     __tablename__ = 'EVENT'
     id = db.Column('EVENT_ID', db.Integer, primary_key=True)
     name = db.Column('EVENT_NAME', db.VARCHAR(255))
-    month = db.Column('EVENT_MONTH', db.Integer)
-    day = db.Column('EVENT_DAY', db.Integer)
-    des = db.Column('EVENT_DES', db.VARCHAR(255))
+    day = db.Column('EVENT_DATE', db.DATE)
+    des = db.Column('EVENT_DES', db.VARCHAR)
+    time = db.Column('EVENT_TIME', db.VARCHAR)
+    loc = db.Column('EVENT_LOCATION', db.VARCHAR)
     festival_id = db.Column(db.Integer, db.ForeignKey('FESTIVAL.FESTIVAL_ID'))
     @property
     def serialize(self):
@@ -94,10 +94,32 @@ class Events(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'month': self.month,
-            'day': self.day,
             'des': self.des,
+            'day': self.day,
+            'time': self.time,
+            'loc': self.loc,
             'festival_id': self.festival_id,
+        }
+
+
+class Quiz(db.Model):
+    __tablename__ = 'QUIZ'
+    id = db.Column('QUIZ_ID', db.Integer, primary_key=True)
+    img = db.Column('QUIZ_IMG', db.VARCHAR(255))
+    answer = db.Column('QUIZ_ANS', db.VARCHAR(255))
+    quiz = db.Column('QUIZ', db.VARCHAR(255))
+    option = db.Column('QUIZ_OPTION', db.VARCHAR(255))
+    date = db.Column('DATE', db.DATE)
+    @property
+    def serialize(self):
+        """Return object data in easily serializable format"""
+        return {
+            'id': self.id,
+            'img': self.img,
+            'answer': self.answer,
+            'quiz': self.quiz,
+            'option': self.option,
+            'date': self.date,
         }
 
 
@@ -120,6 +142,35 @@ class Recipe(db.Model):
             'pic': self.pic,
             'country_id': self.country_id,
         }
+
+
+class Restaurant(db.Model):
+    __tablename__ = 'RESTAURANT'
+    id = db.Column('Index', db.Integer, primary_key=True)
+    name = db.Column('Name', db.VARCHAR(255))
+    address = db.Column('Address', db.VARCHAR(255))
+    latitude = db.Column('Latitude', db.VARCHAR(255))
+    longitude = db.Column('Longitude', db.VARCHAR(255))
+    timings = db.Column('Timings', db.VARCHAR(255))
+    price = db.Column('Price', db.Integer)
+    rate = db.Column('Rate', db.Float(255))
+    country = db.Column('Country', db.VARCHAR(255))
+
+    @property
+    def serialize(self):
+        """Return object data in easily serializable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'address': self.address,
+            'latitude': self.latitude,
+            'longitude': self.longitude,
+            'timings': self.timings,
+            'price': self.price,
+            'rate': self.rate,
+            'country': self.country,
+        }
+
 
 # 1.创建表
 db.create_all()

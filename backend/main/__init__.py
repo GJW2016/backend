@@ -2,7 +2,7 @@ from flask import render_template
 from flask import Blueprint
 from flask import url_for
 from flask import Flask, jsonify
-from backend.model import Country, Contents, Tags, Events, Festival, Recipe
+from backend.model import Country, Contents, Tags, Events, Festival, Quiz, Recipe, Restaurant
 
 main = Blueprint('main', __name__, template_folder='templates', static_folder='static', static_url_path="/static")
 
@@ -37,10 +37,22 @@ def get_festivals():
     return jsonify(json_list=[i.serialize for i in festivals])
 
 
+@main.route('/quizzes')
+def get_quizzes():
+    quizzes = Quiz.query.all()
+    return jsonify(json_list=[i.serialize for i in quizzes])
+
+
 @main.route('/recipes')
 def get_recipes():
     recipes = Recipe.query.all()
     return jsonify(json_list=[i.serialize for i in recipes])
+
+
+@main.route('/restaurants')
+def get_restaurants():
+    restaurants = Restaurant.query.all()
+    return jsonify(json_list=[i.serialize for i in restaurants])
 
 
 @main.route('/', defaults={'path': ''})

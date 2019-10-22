@@ -46,6 +46,7 @@ class Contents(db.Model):
     img = db.Column('CONTENT_IMAGE', db.VARCHAR(255))
     country_id = db.Column(db.Integer, db.ForeignKey('COUNTRY.COUNTRY_ID'))
     tag_id = db.Column(db.Integer, db.ForeignKey('TAGS.TAG_ID'))
+    content_name = db.Column('CONTENT_NAME', db.VARCHAR(255))
 
     @property
     def serialize(self):
@@ -55,7 +56,9 @@ class Contents(db.Model):
             'content': self.content,
             'img': self.img,
             'country_id': self.country_id,
-            'tag_id': self.tag_id
+            'tag_id': self.tag_id,
+            'content_name': self.content_name
+
         }
 
 
